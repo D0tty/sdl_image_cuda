@@ -190,6 +190,12 @@ void gpu_grey(SDL_Surface *img) {
     SDL_UnlockSurface(img);
 }
 
+void gpu_grey_histo_idx(SDL_Surface *img) {
+    SDL_LockSurface(img);
+    gpu_grey_histo_idx((uint32_t *)img->pixels, img->w, img->h);
+    SDL_UnlockSurface(img);
+}
+
 int main(int argc, char ** argv)
 {
     (void)argc; (void)argv;
@@ -227,7 +233,7 @@ int main(int argc, char ** argv)
                     }
                     case SDLK_c: {
                         SDL_Surface *tmp = SDL_DuplicateSurface(img);
-                        gpu_grey(tmp);
+                        gpu_grey_histo_idx(tmp);
                         texture = SDL_CreateTextureFromSurface(renderer, tmp);
                         SDL_RenderCopy(renderer, texture, nullptr, nullptr);
                         SDL_FreeSurface(tmp);

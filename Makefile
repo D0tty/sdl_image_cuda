@@ -24,7 +24,7 @@ $(BIN):$(OBJS) $(CUOBJS)
 cuda:$(CUOBJS)
 
 $(CUOBJS):$(CUSRC)
-	nvcc -c $(CUSRC)
+	nvcc -G -c $(CUSRC)
 
 clean:
 	$(RM) $(OBJS) $(CUOBJS) $(BIN)

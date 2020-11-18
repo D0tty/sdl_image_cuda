@@ -20,4 +20,6 @@ union rgbx8888_u {
 
 void gpu_grey(uint32_t *img, int w, int h);
 
+void gpu_grey_histo_idx(uint32_t *img, int w, int h);
+
 #endif //IMAGE_GPU_HPP
